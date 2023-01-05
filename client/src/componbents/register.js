@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import "./mix.css"
 import { toast, ToastContainer } from 'react-toastify'
 import axios from 'axios';
+import url from "../configur/keys"
+
 
 export default function Register() {
     const history = useNavigate()
@@ -56,7 +58,7 @@ export default function Register() {
                 position: "top-right"
             });
         } else {
-            let res = await axios.post("http://localhost:3001/register", inpval)
+            let res = await axios.post(`${url.baseUrl}/register`, inpval)
                 .catch((err) => {
                     toast.error(err.response.data)
                 })

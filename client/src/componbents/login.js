@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import url from "../configur/keys"
+
 
 export default function Login() {
     let history = useNavigate()
@@ -26,7 +28,7 @@ export default function Login() {
         else if (!password)
             toast.error("password is required !")
         else {
-            let res = await axios.post("http://localhost:3001/login", inpval)
+            let res = await axios.post(`${url.baseUrl}/login`, inpval)
                 .catch((err) => {
                     toast.error(err.response.data);
                 })

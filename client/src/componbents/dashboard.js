@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Logincontext } from '../App'
+import url from "../configur/keys"
 
 export default function Dashboard() {
     const { logindata, setLogindata } = useContext(Logincontext)
@@ -10,7 +11,7 @@ export default function Dashboard() {
     const DashboardValid = async () => {
         let token = localStorage.getItem("userdatatoken");
 
-        await axios.post("http://localhost:3001/gettoken", {
+        await axios.post(`${url.baseUrl}/gettoken`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": token

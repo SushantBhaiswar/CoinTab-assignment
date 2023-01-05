@@ -4,9 +4,11 @@ const app = express()
 const Router = require("./route")
 const cors = require("cors")
 const Cookiparser = require("cookie-parser")
+// require('dotenv').config()
+const DB = require("./configur/keys")
 
 mongoose.set('strictQuery', true)
-mongoose.connect("mongodb+srv://Sushant_Bhaiswar_30:WBYUu1bCYmxmZUmg@cluster0.jui41on.mongodb.net/sample-db?retryWrites=true&w=majority")
+mongoose.connect(DB.DB)
     .then(() => {
         console.log("mongodb is connected")
     })
@@ -32,6 +34,6 @@ if (process.env.NODE_ENV == 'production') {
         )
     })
 }
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log("Express app is running on port 3001");
 })

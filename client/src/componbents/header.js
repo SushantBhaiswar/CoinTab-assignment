@@ -7,6 +7,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom"
+import url from "../configur/keys"
+
 
 export default function Header() {
     const { logindata, setLogindata } = useContext(Logincontext)
@@ -26,7 +28,7 @@ export default function Header() {
         console.log("called");
         let token = localStorage.getItem("userdatatoken");
 
-        await axios.post("http://localhost:3001/logout", {
+        await axios.post(`${url.baseUrl}/logout`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": token
